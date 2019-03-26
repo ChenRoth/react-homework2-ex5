@@ -24,13 +24,15 @@
             }
         }
 
-        decreaseBalance() {
+        decreaseBalance = () => {
             this.setState({
                 balance: this.state.balance - 100
             });
         }
 
-        increaseBalance() {
+        // when we use instance properties instead of class methods, 
+        // we can bind the function to the object FOREVER! (this.setState would work anywhere)
+        increaseBalance = () => {
             this.setState({
                 balance: this.state.balance + 50
             });
@@ -40,14 +42,10 @@
             console.log(this.state.balance);
             return e('div', null,
                 e('button', {
-                    onClick: this.decreaseBalance.bind(this)
+                    onClick: this.decreaseBalance,
                 }, 'WITHDRAW'),
                 e('button', {
-                    // we must bind increaseBalance, because when onClick is called,
-                    // it's unaware of the BankAccount object (the original this)
-                    // and instead is called without the BankAccount object
-                    // causing an error when trying to use this.setState()
-                    onClick: this.increaseBalance.bind(this)
+                    onClick: this.increaseBalance,
                 }, 'DEPOSIT'),
             );
         }
