@@ -14,7 +14,16 @@
   
 </body>
 <script>
-    const app = React.createElement('div');
+    class BankAccount extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                balance: props.initialBalance
+            }
+        }
+    }
+
+    const app = React.createElement(BankAccount, {initialBalance: 300});
 
     ReactDOM.render(app, document.querySelector('#app'));
 </script>
