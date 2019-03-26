@@ -43,6 +43,7 @@
                 e('button', {
                     onClick: () => this.changeBalance(this.DEPOSIT_AMOUNT),
                 }, 'DEPOSIT'),
+                e('div', null, (balance < 0) ? ':(' : '')
             );
         }
     }
