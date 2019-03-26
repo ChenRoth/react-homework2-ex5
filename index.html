@@ -15,7 +15,7 @@
 </body>
 <script>
     const e = React.createElement;
-
+    
     class BankAccount extends React.Component {
         constructor(props) {
             super(props);
@@ -23,6 +23,9 @@
                 balance: props.initialBalance
             }
         }
+
+        WITHDRAW_AMOUNT = 100;
+        DEPOSIT_AMOUNT = 50;
 
         decreaseBalance = (amount) => {
             this.setState({
@@ -43,10 +46,10 @@
             return e('div', null,
                 e('div', null, balance),
                 e('button', {
-                    onClick: () => this.decreaseBalance(100),
+                    onClick: () => this.decreaseBalance(this.WITHDRAW_AMOUNT),
                 }, 'WITHDRAW'),
                 e('button', {
-                    onClick: () => this.increaseBalance(50),
+                    onClick: () => this.increaseBalance(this.DEPOSIT_AMOUNT),
                 }, 'DEPOSIT'),
             );
         }
