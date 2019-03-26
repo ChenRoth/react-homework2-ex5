@@ -37,7 +37,19 @@
         }
 
         render() {
-            return e('div');
+            console.log(this.state.balance);
+            return e('div', null,
+                e('button', {
+                    onClick: this.decreaseBalance.bind(this)
+                }, 'WITHDRAW'),
+                e('button', {
+                    // we must bind increaseBalance, because when onClick is called,
+                    // it's unaware of the BankAccount object (the original this)
+                    // and instead is called without the BankAccount object
+                    // causing an error when trying to use this.setState()
+                    onClick: this.increaseBalance.bind(this)
+                }, 'DEPOSIT'),
+            );
         }
     }
 
