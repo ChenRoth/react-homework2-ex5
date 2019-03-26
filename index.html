@@ -24,17 +24,17 @@
             }
         }
 
-        decreaseBalance = () => {
+        decreaseBalance = (amount) => {
             this.setState({
-                balance: this.state.balance - 100
+                balance: this.state.balance - amount
             });
         }
 
         // when we use instance properties instead of class methods, 
         // we can bind the function to the object FOREVER! (this.setState would work anywhere)
-        increaseBalance = () => {
+        increaseBalance = (amount) => {
             this.setState({
-                balance: this.state.balance + 50
+                balance: this.state.balance + amount
             });
         }
 
@@ -43,10 +43,10 @@
             return e('div', null,
                 e('div', null, balance),
                 e('button', {
-                    onClick: this.decreaseBalance,
+                    onClick: () => this.decreaseBalance(100),
                 }, 'WITHDRAW'),
                 e('button', {
-                    onClick: this.increaseBalance,
+                    onClick: () => this.increaseBalance(50),
                 }, 'DEPOSIT'),
             );
         }
