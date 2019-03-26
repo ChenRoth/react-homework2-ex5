@@ -39,8 +39,9 @@
         }
 
         render() {
-            console.log(this.state.balance);
+            const {balance} = this.state;
             return e('div', null,
+                e('div', null, balance),
                 e('button', {
                     onClick: this.decreaseBalance,
                 }, 'WITHDRAW'),
