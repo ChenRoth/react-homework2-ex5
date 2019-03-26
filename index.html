@@ -8,6 +8,36 @@
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <title>React Homework 2 ex 5</title>
+    <style>
+        .bank-account {
+            background: #ddd;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .balance {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            cursor: pointer;
+            border: 0;
+            background: #888;
+            padding: 10px;
+            margin: 5px;
+            color: #fff;
+        }
+
+        .danger {
+            background: red;
+        }
+
+        .success {
+            background: lime;
+        }
+    
+    </style>
 </head>
 
 <body>
@@ -37,12 +67,16 @@
             const {
                 balance
             } = this.state;
-            return e('div', null,
-                e('div', null, balance),
+            return e('div', {
+                class: 'bank-account'
+            },
+                e('div', { class: 'balance'}, balance),
                 e('button', {
+                    class: 'button danger',
                     onClick: () => this.changeBalance(-this.WITHDRAW_AMOUNT),
                 }, 'WITHDRAW'),
                 e('button', {
+                    class: 'button success',
                     onClick: () => this.changeBalance(this.DEPOSIT_AMOUNT),
                 }, 'DEPOSIT'),
                 (balance < 0) ? e('div', null, ':(') : null
