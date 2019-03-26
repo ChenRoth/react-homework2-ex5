@@ -22,6 +22,18 @@
             }
         }
 
+        decreaseBalance() {
+            this.setState({
+                balance: this.state.balance - 100
+            });
+        }
+
+        increaseBalance() {
+            this.setState({
+                balance: this.state.balance + 50
+            });
+        }
+
         render() {
             return React.createElement('div');
         }
